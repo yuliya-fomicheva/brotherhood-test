@@ -1,0 +1,386 @@
+:root {
+    --dark-color: #0C1014;
+    --pink-color: #E5266E;
+    --white-color: #FFFFFF;
+    --grey-color: #6A6E72;
+    --required-color: #D90000;
+    --blue-color: #0848C0;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+}
+
+/* Главная страниц */
+.page {
+  font-size: 16px; 
+  font-family: 'PT Sans', serif; 
+  font-weight: 400; 
+  line-height: 24px; 
+  color: var(--dark-color);
+}
+
+
+.page__main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 50px;
+  text-align: center;
+
+}
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.title {
+  font-size: 28px; 
+  font-weight: 800; 
+  line-height: 34px; 
+  font-family: 'Montserrat',sans-serif;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px;
+
+
+  font-size: 16px; 
+  font-family: "Lato", sans-serif;
+  font-weight: 600; 
+  line-height: 18px;
+  color: var(--white-color);
+  text-align: center; 
+
+  background-color: var(--pink-color);
+  border: 1px solid var(--pink-color);
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+.button:hover,
+.button:focus{
+  background: transparent;
+  color: var(--pink-color);
+  outline: 1px solid var(--pink-color);
+}
+
+/* Модальное окно  */
+
+.modal {
+    max-width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none; 
+    background: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+
+.modal__wrapper {
+  max-width: 754px;
+  margin: 1.75rem auto;
+  position: relative;
+  background: var(--white-color);
+  border-radius: 16px;
+}
+
+
+.modal__content {
+    position: relative;
+    display: block;
+    padding: 62px 98px 52px;
+}
+
+.modal_active {
+  display: block; 
+} 
+
+.modal__title {
+    margin-left: 24px;
+    margin-bottom: 26px;
+}
+
+/* Секция обязательно к заполнению */
+.form__section-required {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+   
+}
+
+/* Добавление аватарки */
+.form__add-avatar {
+    order: 2;
+    position: relative;
+    margin-left: 30px;
+}
+
+
+
+.form__background-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.form__background-avatar {
+    width: 163px;
+    height: 163px;
+    background-color: #E5266E;
+    background-image: url('../img/avatar.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+
+
+.background-avatar__icon {
+  display: block;
+  text-align: center;
+}
+.background-avatar__text {
+  background: transparent;
+  border: none;
+  text-align: center;
+   font-size: 18.67px; 
+   font-weight: 400; 
+   text-decoration: underline; 
+   line-height: 28px; 
+   color: var(--white-color);
+   padding: 0 30px;
+   z-index: 100;
+   cursor: pointer;
+}
+
+.form__input-avatar  {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 900;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+  background: transparent;
+  width: 163px;
+  height: 163px;
+  margin: 25% 0;
+}
+
+.svg__upload {
+  fill: var(--white-color);
+}
+
+.form__input-avatar:hover + .form__background-wrapper .background-avatar__text,
+.form__input-avatar:hover + .form__background-wrapper .svg__upload {
+  color: var(--pink-color);
+  fill: var(--pink-color);
+}
+
+.form__add-avatar-delete {
+  width: 36.17px; 
+  height: 36.17px; 
+  background: var(--white-color);
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  right: 2px;
+  z-index: 950;
+  cursor: pointer;
+}
+
+.form__add-avatar-delete:hover,
+.form__add-avatar-delete:hover  .svg__delete {
+  background-color: var(--pink-color);
+  fill: var(--white-color);
+} 
+.svg__delete {
+  fill: var(--grey-color);
+}
+
+/* Добавление первых трех обязательных полей */
+.form__add-info {
+    order: 1;
+    max-width: 362px;
+    width: 100%;
+}
+
+/* Формы ввода */
+
+.form__container {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.form__container_last-child {
+  margin-bottom: 50px;
+}
+
+.form__input {
+  padding: 20px 16px 8px;
+  border: 1px solid var(--grey-color);
+  border-radius: 2px;
+  width:100%;
+
+  font-family: 'PT Sans', serif;   
+  font-size: 16px;
+  font-weight: 400; 
+  line-height: 24px;
+}
+
+.form__input:focus,
+.form__input:active {
+  border: 1px solid var(--pink-color);
+  outline: 1px solid var(--pink-color);
+}
+
+.form__icon {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+}
+
+.form__input_select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form__label{  
+  font-family: 'PT Sans', serif; 
+  font-size: 12px;
+  font-weight: 400; 
+  line-height: 16px; 
+
+  color: var(--grey-color);
+
+  position: absolute;
+  top: 8px;
+  left: 16px;
+
+  margin-bottom: 6px;
+}
+
+  
+.form__label_logo {
+
+  top: 0px;
+  left: 0px;
+
+  font-size: 14px; 
+  font-weight: 700;
+
+}
+
+
+.form_label_required {
+  left: 28px; 
+}
+
+.form_label_required::before {
+  position: absolute;
+  content: '✱';
+  top: 0;
+  left: -12px;
+  
+  color: var(--required-color); 
+  font-size: 12px; 
+  font-weight: 400; 
+}
+
+.form__button {
+    width: 100%;
+}
+
+.form__button_cancel {
+  border: none;
+
+  background-color: transparent;
+  color: var(--blue-color);
+    
+  font-size: 16px; 
+  font-family: 'PT Sans' , serif;
+  font-weight: 400;
+  line-height: 24px;
+
+}
+
+.form__button_cancel:hover,
+.form__button_cancel:focus {
+  outline: none;
+  border: none;
+}
+
+@media (max-width: 750px) {
+  .modal__wrapper {
+    margin: 0 auto;
+  }
+    
+  .form__label_logo {
+
+    top: -16px;
+    left: 25%;
+
+}
+.form__add-avatar {
+  order: 1;
+  margin-left: 30px;
+}
+
+.form__add-info {
+  order: 2;
+  min-width: 100%;
+}
+
+@media (max-width: 500px) {
+  
+  .modal__content { 
+    padding: 30px 50px 26px;
+  }
+
+  
+}
+
+}

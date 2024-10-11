@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Практика-1</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+</head>
+<body class="page__body">
+
+	<main class="page__main">
+		<section class="project">
+            <h1 class="project__title title">Нажмите на&nbsp;кнопку, чтобы октрыть модальное окно</h1>
+            <button type="button" class="button project__button">Открыть</button>
+		</section>
+	</main>
+
+	<section  class="modal">
+        <div class="modal__wrapper"> 
+            <div class="modal__content">
+                <h1 class="modal__title title">Стать партнером проекта</h1>
+                <form class="form modal__form" method="post" action="#">
+
+                    <div class="form__section-required">
+
+                        <div class="form__add-avatar">
+                            <label  class="form__label form__label_logo form_label_required" for="avatar">Логотип(jpeg, png)</label>
+                            <input class="form__input-avatar" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" required />
+                            <div class="form__background-wrapper">
+                                <div class="form__background-avatar">
+                                
+                                    <button type="button" class="form__add-avatar-delete">
+                                        <svg class="svg__delete" viewBox="0 0 16 17" width="16" height="17">
+                                            <use href='./img/svg/sprites.svg#delete_file'></use>
+                                        </svg>
+                                    </button>
+                                    <div class="background-avatar__icon">
+                                        <svg class="svg__upload" viewBox="0 0 30 30" width="30" height="30">
+                                            <use  href='./img/svg/sprites.svg#upload_file'></use>
+                                        </svg>
+                                        <button type="button"class="background-avatar__text">Выберете файл</button>
+                                    </div>
+                            
+                                </div>   
+                            </div>
+
+                            
+                        </div>
+                    
+
+                        <div class="form__add-info">
+                            <div class="form__container">
+                                <label class="form__label form_label_required" for="organization">Название организации</label>
+                                <input  class="form__input form__input-required" id="organization" type="text" name="organization" 
+                                placeholder="Организация" required> 
+                            </div>
+
+                            <div class="form__container">
+                                <label class="form__label form_label_required" for="phone" >Телефон</label>
+                                <input  class="form__input form__input-required phone" id="phone" type="text" name="phone" 
+                                placeholder="+7 ___ ___-__-__" value="+7 ___ ___-__-__"   required pattern="\+?[0-9\s\-\(\)]+">
+                            </div>
+
+                            <div class="form__container">
+                                <label class="form__label form_label_required" for="email">E-mail</label>
+                                <input  class="form__input" id="email" type="email" name="email" 
+                                placeholder="email@mail.ru" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label form_label_required" for="field">Направление</label>
+                    
+                        <svg class="form__icon" viewBox="0 0 10 7" width="10" height="7">
+                            <use href='./img/svg/sprites.svg#select'></use>
+                        </svg>
+                        
+                        <select class="form__input form__input_select" name="field" id="field" required>
+                            <option value="petersburg">Экология</option>
+                            <option value="samara">Медиа</option>
+                            <option value="perm">Волонтёрство</option>
+                            <option value="novosibirsk">Образование</option>
+                        </select>
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="website">Веб-сайт</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 18 18" width="18" height="18">
+                            <use href='./img/svg/sprites.svg#website'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="website" type="url" pattern="^https://.*$"  name="website" 
+                        placeholder="https://my-website.ru">
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="vk">Вконтакте</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 19 11" width="19" height="11">
+                            <use href='./img/svg/sprites.svg#vk'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="vk" type="url" pattern="^https://vk.com/.*$"  name="vk" 
+                        placeholder="https://vk.com/username">
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="ok">Одноклассники</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 12 18" width="12" height="18">
+                            <use href='./img/svg/sprites.svg#ok'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="ok" type="url" pattern="^https://ok.ru/.*$" name="ok" 
+                        placeholder="https://ok.ru/username">
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="facebook">Facebook</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 9 17" width="9" height="17">
+                            <use href='./img/svg/sprites.svg#facebook'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="facebook" type="url" pattern="^https://www.facebook.com/.*$"  name="facebook" 
+                        placeholder="https://www.facebook.com/username">
+                    </div>
+                    
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="instagram">iInstagram</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 18 18" width="18" height="18">
+                            <use href='./img/svg/sprites.svg#inst'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="instagram" type="url" pattern="^https://www.instagram.com//.*$" name="instagram" 
+                        placeholder="https://www.instagram.com/username">
+                    </div>
+
+                    <div class="form__container">
+                        <label class="form__label visually-hidden" for="youtube">Youtube</label>
+                        
+                        <svg class="form__icon" viewBox="0 0 18 14" width="18" height="14">
+                            <use href='./img/svg/sprites.svg#youtube'></use>
+                        </svg>
+                        
+                        <input  class="form__input" id="youtube" type="url" pattern="^https://www.youtube.com/.*$" name="youtube" 
+                        placeholder="https://www.youtube.com/username">
+                    </div>
+                    
+                    <div class="form__container  form__container_last-child">
+                        <label class="form__label" for="leader">Руководитель</label>
+                        
+                        <input  class="form__input" id="leader" type="text" name="leader" 
+                        placeholder="Иванов Иван Иванович">
+                    </div>
+
+                    <button type="submit" class="button form__button">Стать партнером проекта</button>
+                    <button type="button" class="button form__button form__button_cancel">Отменить</button>
+                </form>
+        
+            </div>
+        </div>
+	</section>
+	<script  src="js/setup.js"></script>
+</body>
+</html>

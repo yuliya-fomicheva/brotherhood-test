@@ -1,0 +1,60 @@
+:root {
+    --color-head: #FF9999;
+    --color-border: #ddd;
+    --color-main:#FFCCCC; 
+    --color-focus: #FF6666;
+}
+
+table {
+	width: 100%;
+	border: none;
+	margin: 20px 0;
+}
+table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: var(--color-head);
+	font-size: 14px;
+	border-left: 1px solid var(--color-border);
+	border-right: 1px solid var(--color-border);
+    cursor: pointer;
+}
+table tbody td {
+	text-align: left;
+	border-left: 1px solid var(--color-border);
+	border-right: 1px solid var(--color-border);
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+    
+    
+}
+table thead tr th:first-child, .table tbody tr td:first-child {
+	border-left: none;
+}
+table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+table tbody tr:nth-child(even){
+	background: var(--color-main)
+}
+
+th:hover,
+th:focus {
+    background-color: var(--color-focus);
+}
+.input {
+    width: 50%;
+    font-size: 16px; 
+    padding: 12px 20px 12px ; 
+    border: 2px solid var(--color-main); 
+    margin-bottom: 12px; 
+    }
+
+.input:hover,
+.input:focus {
+    outline: none;
+    border: 2px solid  var(--color-focus);
+}
