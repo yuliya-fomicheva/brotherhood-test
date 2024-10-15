@@ -41,6 +41,10 @@ table tbody tr:nth-child(even){
 	background: var(--color-main)
 }
 
+table tbody tr:nth-child(odd){
+	background: white;
+}
+
 th:hover,
 th:focus {
     background-color: var(--color-focus);
