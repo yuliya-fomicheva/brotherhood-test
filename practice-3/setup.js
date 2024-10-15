@@ -75,7 +75,6 @@ function changeSort (colNum) {
 }
 
 
-<<<<<<< HEAD
 function renderTable(data) {
     let rows = tbody.querySelectorAll('tr');
     rows.forEach(row => {row.remove();});
@@ -92,8 +91,6 @@ function renderTable(data) {
 
 }
 
-=======
->>>>>>> 2e76d20552dd0a721e8438389925923359ef618a
 
 //поиск
 search.addEventListener("keyup", function (e) {
