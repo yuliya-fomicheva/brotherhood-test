@@ -3,6 +3,7 @@ const table = document.querySelector('.table')
 const tbody = table.querySelector('.tbody')
 const template = document.querySelector('#template')
 const sortFlag = [true, true, true, true];
+const allRows = [];
 
 
 async function getPosts() {
@@ -17,6 +18,7 @@ async function getPosts() {
             row.querySelector('.title').textContent = post.title;
             row.querySelector('.body').textContent = post.body;
             tbody.append(row)
+
         });
       
     } catch (error) {
@@ -24,28 +26,22 @@ async function getPosts() {
         let cells = row.querySelectorAll('td');
         cells.forEach(cell => {cell.textContent = "Posts not found"});
         tbody.append(row)
+    } finally {
+        const rows = tbody.getElementsByTagName("tr"); 
+        for (let i = 0; i < rows.length; i++) {
+            allRows.push(rows[i]);
+        }
     }
+    
 }
 
-
+//слушатель события для сортировки таблицы
 table.addEventListener ("click", function (e) {
     if(e.target.tagName != 'TH') return  
     let th = e.target;
-    const rowsArray = sortTable(th.cellIndex, th.dataset.type);
+    const sortRows = sortTable(th.cellIndex, th.dataset.type);
 
-    //удалить предущие значения
-    let rows = tbody.querySelectorAll('tr');
-    rows.forEach(row => {row.remove();});
-
-    //отрисовать отсортированные значения
-    rowsArray.forEach((post) => {
-        const item = template.content.cloneNode(true);
-        item.querySelector('.userId').textContent = post.querySelector('.userId').textContent;
-        item.querySelector('.id').textContent = post.querySelector('.id').textContent;
-        item.querySelector('.title').textContent = post.querySelector('.title').textContent;
-        item.querySelector('.body').textContent = post.querySelector('.body').textContent;
-        tbody.append(item)
-    });
+    renderTable(sortRows);
     
 });
 
@@ -78,36 +74,22 @@ function changeSort (colNum) {
         (i == colNum) ? sortFlag[colNum] = !sortFlag[colNum] : sortFlag[i] = true; 
 }
 
-// событие при вводе в поиск
+
+
+//поиск
 search.addEventListener("keyup", function (e) {
-    filter = search.value.toUpperCase();
-    const tr = tbody.getElementsByTagName("tr");
-    let foundFlag; 
-
-    // Если меньше трех символов введено, покзаываем все строки
-    if (filter.length < 3) {
-        for (i = 0; i < tr.length; i++) {
-            tr[i].style.display = "";
-        }
-        return;
-    }
-
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        foundFlag = false;
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                foundFlag = true;
-            }
-        }
-        
-        if (foundFlag) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-        }
+    const filter = this.value.toLowerCase();
+    if (filter.length >= 3) {
+        const filterRows= allRows.filter(item => 
+            item.innerText.toLowerCase().includes(filter) 
+        );
+        renderTable(filterRows);
+    } 
+    else {
+        renderTable(allRows); // Показываем все строки, если введено меньше 3 символов
     }
 });
+
 
 getPosts();
 
