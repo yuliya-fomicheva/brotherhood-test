@@ -1,4 +1,3 @@
-
 //главная страница
 const openModulBtn = document.querySelector('.project__button');
 const title = document.querySelector('.project__title');
@@ -14,7 +13,6 @@ const avatar = document.querySelector('.form__background-avatar');
 const avatarIcon = document.querySelector('.background-avatar__icon');
 
 const deleteImg = document.querySelector('.form__add-avatar-delete')
-
 
 
 
@@ -73,56 +71,10 @@ form.addEventListener('submit', (evt) => {
     closeModal();
 });
 
-
-// событие при вводе номера телефона
-phoneInput.addEventListener('input', (e) => {
-  const newPhoneNumber = e.target.value.replace(/\D+/g, ''); 
-  const newFormattedPhoneNumber = formatPhoneNumber(newPhoneNumber);
-  e.target.value = newFormattedPhoneNumber;
-  phoneInput.value = newFormattedPhoneNumber;
+//вврд номера телефона
+phoneInput.addEventListener('input', function (e) {
+  const x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+  e.target.value = !x[2] ? '+7 ' : '+7 ' + x[2] +  (x[3] ? ' ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
   phoneInput.setAttribute('value', phoneInput.value);
 
 });
-
-
-// событие при удалении цифр в номере телефона
-phoneInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace' || e.key === 'Delete') {
-    const phoneNumber = e.target.value.replace(/\D+/g, ''); 
-    const phoneNumberArray = phoneNumber.split('');
-    const phoneNumberArrayLength = phoneNumberArray.length;
-    if (phoneNumberArrayLength > 1) {
-      phoneNumberArray.pop();
-      const newPhoneNumber = phoneNumberArray.join('');
-      const newFormattedPhoneNumber = formatPhoneNumber(newPhoneNumber);
-      e.target.value = newFormattedPhoneNumber;
-      phoneInput.value = newFormattedPhoneNumber;
-    }
-
-  } else if (e.key !== 'Backspace' && e.key !== 'Delete' && isNaN(e.key)) {
-    e.preventDefault();
-  }
-});
-
-// Ввод номера по маске
-function formatPhoneNumber(phoneNumber) {
-  const maskArray = '+_ ___ ___-__-__'.split('');
-  let formattedPhoneNumber = '';
-  let digitIndex = 0;
-  for (let i = 0; i < maskArray.length; i++) {
-    if (maskArray[i] === '_') {
-      if (digitIndex < phoneNumber.length) {
-        formattedPhoneNumber += phoneNumber[digitIndex++];
-      } else {
-        formattedPhoneNumber += '_';
-      }
-    } else {
-      formattedPhoneNumber += maskArray[i];
-    }
-  }
-  return formattedPhoneNumber;
-}
-
-phoneInput.addEventListener('invalid', () => {
-    phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
-  })
