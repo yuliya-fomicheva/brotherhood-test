@@ -3,6 +3,7 @@
     --pink-color: #E5266E;
     --white-color: #FFFFFF;
     --grey-color: #6A6E72;
+    --ligth-grey-color: #D6DADE;
     --required-color: #D90000;
     --blue-color: #0848C0;
   }
@@ -11,6 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  
 }
 
 img {
@@ -53,7 +55,7 @@ input[type="radio"].visually-hidden {
 }
 
 .title {
-  font-size: 28px; 
+  font-size: 1.75rem; 
   font-weight: 800; 
   line-height: 34px; 
   font-family: 'Montserrat',sans-serif;
@@ -64,7 +66,7 @@ input[type="radio"].visually-hidden {
   padding: 14px;
 
 
-  font-size: 16px; 
+  font-size:  1rem; 
   font-family: "Lato", sans-serif;
   font-weight: 600; 
   line-height: 18px;
@@ -104,14 +106,15 @@ input[type="radio"].visually-hidden {
   margin: 1.75rem auto;
   position: relative;
   background: var(--white-color);
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 
 .modal__content {
     position: relative;
     display: block;
-    padding: 62px 98px 52px;
+    /* padding: 62px 98px 52px; */
+    padding: 53px 98px 40px;
 }
 
 .modal_active {
@@ -119,8 +122,8 @@ input[type="radio"].visually-hidden {
 } 
 
 .modal__title {
-    margin-left: 24px;
-    margin-bottom: 26px;
+    /* margin-left: 24px; */
+    margin-bottom: 35px;
 }
 
 /* Секция обязательно к заполнению */
@@ -128,6 +131,7 @@ input[type="radio"].visually-hidden {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    min-height: 264px;
    
 }
 
@@ -147,6 +151,7 @@ input[type="radio"].visually-hidden {
   width: 100%;
   height: 100%;
   padding: 10px 0;
+  margin-top: -15px;
 }
 
 .form__background-avatar {
@@ -175,7 +180,7 @@ input[type="radio"].visually-hidden {
   background: transparent;
   border: none;
   text-align: center;
-   font-size: 18.67px; 
+   font-size: 1.16rem ; 
    font-weight: 400; 
    text-decoration: underline; 
    line-height: 28px; 
@@ -252,6 +257,7 @@ input[type="radio"].visually-hidden {
 .form__container {
   position: relative;
   margin-bottom: 32px;
+  max-height: 56px;
 }
 
 .form__container_last-child {
@@ -259,21 +265,28 @@ input[type="radio"].visually-hidden {
 }
 
 .form__input {
-  padding: 20px 16px 8px;
-  border: 1px solid var(--grey-color);
+  padding: 16px;
+  border: 1px solid var(--ligth-grey-color);
   border-radius: 2px;
   width:100%;
 
   font-family: 'PT Sans', serif;   
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400; 
   line-height: 24px;
 }
 
+
+
+.form__input_label, 
+.form__input:required {
+  padding: 20px 16px 12px;
+}
+
 .form__input:focus,
 .form__input:active {
-  border: 1px solid var(--pink-color);
-  outline: 1px solid var(--pink-color);
+  outline: none;
+
 }
 
 .form__icon {
@@ -290,7 +303,7 @@ input[type="radio"].visually-hidden {
 
 .form__label{  
   font-family: 'PT Sans', serif; 
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 400; 
   line-height: 16px; 
 
@@ -299,24 +312,17 @@ input[type="radio"].visually-hidden {
   position: absolute;
   top: 8px;
   left: 16px;
+  /* display: none; */
 
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
 }
 
   
-.form__label_logo {
 
-  top: 0px;
-  left: 0px;
-
-  font-size: 14px; 
-  font-weight: 700;
-
-}
 
 
 .form_label_required {
-  left: 28px; 
+  left: 26px; 
 }
 
 .form_label_required::before {
@@ -326,8 +332,18 @@ input[type="radio"].visually-hidden {
   left: -12px;
   
   color: var(--required-color); 
-  font-size: 12px; 
+  font-size: 0.75rem; 
   font-weight: 400; 
+}
+
+.form__label_logo {
+
+  top: 2px;
+  left: 30px;
+
+  font-size: 0.875rem; 
+  font-weight: 700;
+
 }
 
 .form__button {
@@ -340,7 +356,7 @@ input[type="radio"].visually-hidden {
   background-color: transparent;
   color: var(--blue-color);
     
-  font-size: 16px; 
+  font-size: 1rem; 
   font-family: 'PT Sans' , serif;
   font-weight: 400;
   line-height: 24px;
@@ -354,19 +370,16 @@ input[type="radio"].visually-hidden {
 }
 
 @media (max-width: 750px) {
-  .modal__wrapper {
-    margin: 0 auto;
-  }
     
   .form__label_logo {
 
-    top: -16px;
+    top: -30px;
     left: 25%;
 
 }
 .form__add-avatar {
   order: 1;
-  margin-left: 30px;
+  margin: 0 auto;
 }
 
 .form__add-info {
@@ -374,13 +387,6 @@ input[type="radio"].visually-hidden {
   min-width: 100%;
 }
 
-@media (max-width: 500px) {
-  
-  .modal__content { 
-    padding: 30px 50px 26px;
-  }
-
-  
 }
 
-}
+
