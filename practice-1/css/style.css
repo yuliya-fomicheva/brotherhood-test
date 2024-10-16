@@ -113,7 +113,6 @@ input[type="radio"].visually-hidden {
 .modal__content {
     position: relative;
     display: block;
-    /* padding: 62px 98px 52px; */
     padding: 53px 98px 40px;
 }
 
@@ -257,6 +256,7 @@ input[type="radio"].visually-hidden {
 .form__container {
   position: relative;
   margin-bottom: 32px;
+  height: auto;
   max-height: 56px;
 }
 
@@ -370,7 +370,10 @@ input[type="radio"].visually-hidden {
 }
 
 @media (max-width: 750px) {
-    
+
+  .modal__content {
+    padding: 26px 50px 20px;
+}
   .form__label_logo {
 
     top: -30px;
@@ -386,7 +389,12 @@ input[type="radio"].visually-hidden {
   order: 2;
   min-width: 100%;
 }
+}
 
+@media (max-width: 390px) {
+  .modal__content {
+    padding: 26px 25px 20px;
+}
 }
 
 

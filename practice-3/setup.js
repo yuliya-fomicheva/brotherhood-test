@@ -4,6 +4,7 @@ const tbody = table.querySelector('.tbody')
 const template = document.querySelector('#template')
 const sortFlag = [true, true, true, true];
 const allRows = [];
+const currentRows = [];
 
 
 async function getPosts() {
@@ -30,6 +31,7 @@ async function getPosts() {
         const rows = tbody.getElementsByTagName("tr"); 
         for (let i = 0; i < rows.length; i++) {
             allRows.push(rows[i]);
+            currentRows.push(rows[i]);
         }
     }
     
@@ -42,13 +44,12 @@ table.addEventListener ("click", function (e) {
     const sortRows = sortTable(th.cellIndex, th.dataset.type);
 
     renderTable(sortRows);
-    
 });
 
 //сортировка таблицы
 function sortTable(colNum, type) {
-    let tbody = table.querySelector('tbody');
     let rowsArray = Array.from(tbody.rows);
+
     let compare;
     if(sortFlag[colNum]) {
         if (type == 'number') {
@@ -64,8 +65,9 @@ function sortTable(colNum, type) {
         }
     }
     changeSort(colNum)
-    
-    return rowsArray.sort(compare);    
+    allRows.sort(compare); // сохраняем сортировку всех строк 
+    return rowsArray.sort(compare); // возвращаем отсортированные текущие строки
+     
 
 }
 // смена флага, если произошла сортировка. Флаг -- проверка сколько нажатий было. 
@@ -78,8 +80,6 @@ function changeSort (colNum) {
 function renderTable(data) {
     let rows = tbody.querySelectorAll('tr');
     rows.forEach(row => {row.remove();});
-
-    //отрисовать отсортированные значения
     data.forEach((d) => {
         const item = template.content.cloneNode(true);
         item.querySelector('.userId').textContent = d.querySelector('.userId').textContent;
@@ -88,15 +88,14 @@ function renderTable(data) {
         item.querySelector('.body').textContent = d.querySelector('.body').textContent;
         tbody.append(item)
     });
-
-}
-
+       
+    }
 
 //поиск
 search.addEventListener("keyup", function (e) {
     const filter = this.value.toLowerCase();
     if (filter.length >= 3) {
-        const filterRows= allRows.filter(item => 
+        const filterRows=allRows.filter(item => 
             item.innerText.toLowerCase().includes(filter) 
         );
         renderTable(filterRows);
