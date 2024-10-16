@@ -14,6 +14,7 @@ const avatarIcon = document.querySelector('.background-avatar__icon');
 
 const deleteImg = document.querySelector('.form__add-avatar-delete')
 
+let numberFlag = true; 
 
 
 // открыть модуль формы
@@ -62,19 +63,57 @@ deleteImg.addEventListener('click', function  () {
   })
 
 
-
-
-// проверка валидности формы и добавление нового значения в массив
+// проверка валидности формы
 form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+    evt.preventDefault();  
     title.textContent = 'Заявка успешно отправлена!';
     closeModal();
 });
 
-//вврд номера телефона
+
+//при нажатии на форму телефона добавлять +7
+phoneInput.addEventListener('focus', function (e) {
+    if (!e.target.value) {  
+        e.target.value = '+7 '; 
+        phoneInput.setAttribute('value', phoneInput.value); 
+    }
+    validationPhoneMessage()
+});
+
+//ввод номера телефона
 phoneInput.addEventListener('input', function (e) {
   const x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-  e.target.value = !x[2] ? '+7 ' : '+7 ' + x[2] +  (x[3] ? ' ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+  if (numberFlag || e.target.value.length < 4) {
+    numberFlag = true;
+    e.target.value = !x[2] ? '+7 ' : '+7 ' + x[2] +  (x[3] ? ' ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+  }
+  
   phoneInput.setAttribute('value', phoneInput.value);
 
 });
+
+//валидация
+phoneInput.addEventListener("invalid", function(e){ 
+    validationPhoneMessage()
+});
+
+//удаление символов из формы ввода телефона
+phoneInput.addEventListener('keydown', function (e) {
+    if ((e.key === 'Backspace' || e.key === 'Delete') && e.target.value.length > 3) {
+        numberFlag = false; // Если нажата клавиша Backspace или Delete, позволяем удалять любые символы
+      return;
+    }
+    if (e.key >= '0' && e.key <= '9') {
+        numberFlag = true;
+    }
+});
+
+// сообщение для валидации
+function validationPhoneMessage() {
+    if(phoneInput.value.length <= 15 ) {
+        phoneInput.setCustomValidity('Введите корректный номер телефона');
+    } else {
+        phoneInput.setCustomValidity('');
+    }
+}
+  
